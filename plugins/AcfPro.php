@@ -10,7 +10,7 @@ namespace Junaidbhura\Composer\WPProPlugins\Plugins;
 /**
  * AcfPro class.
  */
-class AcfPro {
+class AcfPro extends AbstractPlugin {
 
 	/**
 	 * The version number of the plugin to download.
@@ -34,7 +34,7 @@ class AcfPro {
 	 * @return string
 	 */
 	public function getDownloadUrl() {
-		return 'https://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=' . getenv( 'ACF_PRO_KEY' ) . '&t=' . $this->version;
+		return 'https://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=' . $this->get( 'ACF_PRO_KEY' ) . '&t=' . $this->version;
 	}
 
 }

@@ -12,7 +12,7 @@ use Junaidbhura\Composer\WPProPlugins\Http;
 /**
  * GravityForms class.
  */
-class GravityForms {
+class GravityForms extends AbstractPlugin {
 
 	/**
 	 * The version number of the plugin to download.
@@ -46,7 +46,7 @@ class GravityForms {
 	 */
 	public function getDownloadUrl() {
 		$http     = new Http();
-		$response = unserialize( $http->post( 'https://www.gravityhelp.com/wp-content/plugins/gravitymanager/api.php?op=get_plugin&slug=' . $this->slug . '&key=' . getenv( 'GRAVITY_FORMS_KEY' ) ) );
+		$response = unserialize( $http->post( 'https://www.gravityhelp.com/wp-content/plugins/gravitymanager/api.php?op=get_plugin&slug=' . $this->slug . '&key=' . $this->get( 'GRAVITY_FORMS_KEY' ) ) );
 		if ( ! empty( $response['download_url_latest'] ) ) {
 			return str_replace( 'http://', 'https://', $response['download_url_latest'] );
 		}

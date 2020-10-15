@@ -12,7 +12,7 @@ use Junaidbhura\Composer\WPProPlugins\Http;
 /**
  * PolylangPro class.
  */
-class PolylangPro {
+class PolylangPro extends AbstractPlugin {
 
 	/**
 	 * The version number of the plugin to download.
@@ -39,9 +39,9 @@ class PolylangPro {
 		$http     = new Http();
 		$response = json_decode( $http->post( 'https://polylang.pro', array(
 			'edd_action' => 'get_version',
-			'license'    => getenv( 'POLYLANG_PRO_KEY' ),
+			'license'    => $this->get( 'POLYLANG_PRO_KEY' ),
 			'item_name'  => 'Polylang Pro',
-			'url'        => getenv( 'POLYLANG_PRO_URL' ),
+			'url'        => $this->get( 'POLYLANG_PRO_URL' ),
 			'version'    => $this->version,
 		) ), true );
 		if ( ! empty( $response['download_link'] ) ) {

@@ -12,7 +12,7 @@ use Junaidbhura\Composer\WPProPlugins\Http;
 /**
  * WpAiPro class.
  */
-class WpAiPro {
+class WpAiPro extends AbstractPlugin {
 
 	/**
 	 * The version number of the plugin to download.
@@ -46,12 +46,12 @@ class WpAiPro {
 	 */
 	public function getDownloadUrl() {
 		if ( 'wp-all-export-pro' === $this->slug ) {
-			$license = getenv( 'WP_ALL_EXPORT_PRO_KEY' );
-			$url     = getenv( 'WP_ALL_EXPORT_PRO_URL' );
+			$license = $this->get( 'WP_ALL_EXPORT_PRO_KEY' );
+			$url     = $this->get( 'WP_ALL_EXPORT_PRO_URL' );
 			$name    = 'WP All Export';
 		} else {
-			$license = getenv( 'WP_ALL_IMPORT_PRO_KEY' );
-			$url     = getenv( 'WP_ALL_IMPORT_PRO_URL' );
+			$license = $this->get( 'WP_ALL_IMPORT_PRO_KEY' );
+			$url     = $this->get( 'WP_ALL_IMPORT_PRO_URL' );
 
 			switch ( $this->slug ) {
 				case 'wpai-acf-add-on':
